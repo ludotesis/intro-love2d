@@ -11,6 +11,8 @@ PosXDracula = 600
 PosYDracula = 200
 PosXtxt = 100
 PosYimg = 400
+PosXRey = 100
+PosYRey = 100
 -- Texto
 NombreJugador = "Jugador 1"
 RangoJugador = "Junior"
@@ -25,6 +27,7 @@ function love.load()
     ImgArgentino = love.graphics.newImage("Argentino.jpeg")
     ImgDracula = love.graphics.newImage("Dracula.jpeg")
     ImgDoctor = love.graphics.newImage("Doctor.jpeg")
+    ImgRey = love.graphics.newImage("Rey.jpeg")
     Tiempo = 0
 end
 -- =================== INTERACCION ===================
@@ -38,6 +41,13 @@ function love.keyreleased(key)
    if key == "d" then
       ActivarDoctor = false
    end
+end
+
+function love.mousepressed(x, y, button, istouch, presses)
+    if button == 1 then 
+       PosXRey = x - 100
+       PosYRey = y - 100
+    end
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
@@ -83,4 +93,5 @@ function love.draw()
     if ActivarDoctor then
         love.graphics.draw(ImgDoctor, 0,0,0,0.25,0.25)
     end
+    love.graphics.draw(ImgRey, PosXRey,PosYRey,0,0.25,0.25)
 end
