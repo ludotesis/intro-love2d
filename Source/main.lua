@@ -11,18 +11,18 @@ PosXDracula = 600
 PosXtxt = 100
 PosYimg = 400
 -- Texto
-nombreJugador = "Jugador 1"
-rangoJugador = "Junior"
+NombreJugador = "Jugador 1"
+RangoJugador = "Junior"
 -- Banderas
-puedoDibujar = false
+PuedoDibujar = true
 -- Tiempo
-tiempo = 0
+Tiempo = 0
 -- =================== INICIALIZACION ===================
 function love.load()
-    nombreJugador = "El MejorJugador"
+    NombreJugador = "El MejorJugador"
     ImgArgentino = love.graphics.newImage("Argentino.jpeg")
     ImgDracula = love.graphics.newImage("Dracula.jpeg")
-    tiempo = 0
+    Tiempo = 0
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
@@ -34,18 +34,19 @@ function love.update(dt)
         PosXArgentino = 0
     end
 
-    tiempo = tiempo + dt
-    if tiempo > 2 then
-        puedoDibujar = false
+    Tiempo = Tiempo + dt
+    if Tiempo > 2 then
+        PuedoDibujar = false
     end
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
     love.graphics.print("Posicion X Argentino "..PosXArgentino, 250, 50)
-    if true then
+    love.graphics.print("Tiempo Acumulado "..Tiempo, 250, 100)
+    if PuedoDibujar then
         love.graphics.print("CONDICIONAL", PosXtxt, 200)
     end
-    love.graphics.print(rangoJugador.." "..nombreJugador, PosXtxt, 300)
+    love.graphics.print(RangoJugador.." "..NombreJugador, PosXtxt, 300)
     love.graphics.draw(ImgArgentino, PosXArgentino, PosYimg,0,0.25,0.25)
     love.graphics.draw(ImgDracula, PosXDracula,200,0,0.25,0.25)
 end
