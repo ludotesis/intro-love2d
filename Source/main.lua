@@ -1,53 +1,50 @@
-puntaje = 0
-textPuntaje = ""
-sprite = nil
+-- DECLARACION
+ImgArgentino = nil
+ImgDevil = nil
+ImgDoctor = nil
+ImgRey = nil
+ImgDracula= nil
 
-centroX = 0
-centroY = 0
+nombreJugador = "Jugador 1"
+rangoJugador = "Junior"
 
-centroSpriteX  = 0
-centroSpriteY  = 0
+txtPosX = 100
+imgPosY = 400
+imgArgentinoPosX = 0
+imgDraculaPosX = 600
 
-musica = nil
-sfx = nil
+puedoDibujar = false
 
-escala = 0.4
-escalaMaxima = 0.4
-
+tiempo = 0
+-- INICIALIZACION
 function love.load()
-    textPuntaje = "Puntaje "
-    
-    centroX = love.graphics.getWidth()/2
-    centroY = love.graphics.getHeight()/2
-    sprite = love.graphics.newImage("Rey.jpeg")
-
-    centroSpriteX = sprite:getWidth() / 2
-    centroSpriteY = sprite:getHeight()/2 
-
-    musica = love.audio.newSource("Musica.wav", "stream")
-    sfx = love.audio.newSource("Clic.wav", "static")
-    musica:setLooping(true)
-    love.audio.play(musica)
+    nombreJugador = "El MejorJugador"
+    ImgArgentino = love.graphics.newImage("Argentino.jpeg")
+    ImgDracula = love.graphics.newImage("Dracula.jpeg")
+    tiempo = 0
 end
-
+-- ACTUALIZACION
 function love.update(dt)
-    if escala < escalaMaxima then
-         escala = escala + (0.2 * dt)
+    txtPosX = txtPosX + 1
+    --imgPosY = imgPosY - (500 * dt)
+    if imgArgentinoPosX < imgDraculaPosX then
+          imgArgentinoPosX = imgArgentinoPosX + (400 * dt)
+    else
+        imgArgentinoPosX = 0
+    end
+
+    tiempo = tiempo + dt
+    if tiempo < 1 then
+        
     end
 end
-
-function love.mousepressed(x, y, boton)
-    if boton == 1 then
-        distacia = math.sqrt((x - centroX)^2 + (y - centroY)^2)
-        if distacia < 100 then
-           puntaje = puntaje + 1
-           love.audio.play(sfx)
-           escala = 0.25
-        end
-    end
-end
-
+-- RENDERIZADO
 function love.draw()
-    love.graphics.print(textPuntaje..puntaje, centroX - 60 , 20, 0, 2)
-    love.graphics.draw(sprite, centroX, centroY, 0,escala,escala, centroSpriteX, centroSpriteY)
+    love.graphics.print("Posicion X Argentino "..imgArgentinoPosX, 400, 100)
+    if true then
+        love.graphics.print("CONDICIONAL", txtPosX, 200)
+    end
+    love.graphics.print(rangoJugador.." "..nombreJugador, txtPosX, 300)
+    love.graphics.draw(ImgArgentino, imgArgentinoPosX, imgPosY,0,0.25,0.25)
+    love.graphics.draw(ImgDracula, imgDraculaPosX,200,0,0.25,0.25)
 end
