@@ -1,50 +1,51 @@
--- DECLARACION
+-- =================== DECLARACION ===================
+-- Imagenes
 ImgArgentino = nil
 ImgDevil = nil
 ImgDoctor = nil
 ImgRey = nil
 ImgDracula= nil
-
+-- Posiciones
+PosXArgentino = 0
+PosXDracula = 600
+PosXtxt = 100
+PosYimg = 400
+-- Texto
 nombreJugador = "Jugador 1"
 rangoJugador = "Junior"
-
-txtPosX = 100
-imgPosY = 400
-imgArgentinoPosX = 0
-imgDraculaPosX = 600
-
+-- Banderas
 puedoDibujar = false
-
+-- Tiempo
 tiempo = 0
--- INICIALIZACION
+-- =================== INICIALIZACION ===================
 function love.load()
     nombreJugador = "El MejorJugador"
     ImgArgentino = love.graphics.newImage("Argentino.jpeg")
     ImgDracula = love.graphics.newImage("Dracula.jpeg")
     tiempo = 0
 end
--- ACTUALIZACION
+-- =================== ACTUALIZACION ===================
 function love.update(dt)
-    txtPosX = txtPosX + 1
+    PosXtxt = PosXtxt + 1
     --imgPosY = imgPosY - (500 * dt)
-    if imgArgentinoPosX < imgDraculaPosX then
-          imgArgentinoPosX = imgArgentinoPosX + (400 * dt)
+    if PosXArgentino < PosXDracula then
+        PosXArgentino = PosXArgentino + (400 * dt)
     else
-        imgArgentinoPosX = 0
+        PosXArgentino = 0
     end
 
     tiempo = tiempo + dt
-    if tiempo < 1 then
-        
+    if tiempo > 2 then
+        puedoDibujar = false
     end
 end
--- RENDERIZADO
+-- =================== RENDERIZADO ===================
 function love.draw()
-    love.graphics.print("Posicion X Argentino "..imgArgentinoPosX, 400, 100)
+    love.graphics.print("Posicion X Argentino "..PosXArgentino, 250, 50)
     if true then
-        love.graphics.print("CONDICIONAL", txtPosX, 200)
+        love.graphics.print("CONDICIONAL", PosXtxt, 200)
     end
-    love.graphics.print(rangoJugador.." "..nombreJugador, txtPosX, 300)
-    love.graphics.draw(ImgArgentino, imgArgentinoPosX, imgPosY,0,0.25,0.25)
-    love.graphics.draw(ImgDracula, imgDraculaPosX,200,0,0.25,0.25)
+    love.graphics.print(rangoJugador.." "..nombreJugador, PosXtxt, 300)
+    love.graphics.draw(ImgArgentino, PosXArgentino, PosYimg,0,0.25,0.25)
+    love.graphics.draw(ImgDracula, PosXDracula,200,0,0.25,0.25)
 end
