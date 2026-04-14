@@ -8,6 +8,7 @@ ImgDracula= nil
 -- Posiciones
 PosXArgentino = 0
 PosXDracula = 600
+PosYDracula = 200
 PosXtxt = 100
 PosYimg = 400
 -- Texto
@@ -41,7 +42,7 @@ end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
     PosXtxt = PosXtxt + 1
-    --imgPosY = imgPosY - (500 * dt)
+  
     if PosXArgentino < PosXDracula then
         PosXArgentino = PosXArgentino + (400 * dt)
     else
@@ -51,6 +52,22 @@ function love.update(dt)
     Tiempo = Tiempo + dt
     if Tiempo > 2 then
         PuedoDibujar = false
+    end
+
+    if love.keyboard.isDown("left") then
+        PosXDracula = PosXDracula - (100 * dt)
+    end
+
+    if love.keyboard.isDown("right") then
+        PosXDracula = PosXDracula + (100 * dt)
+    end
+
+    if love.keyboard.isDown("up") then
+        PosYDracula = PosYDracula - (100 * dt)
+    end
+
+    if love.keyboard.isDown("down") then
+         PosYDracula = PosYDracula + (100 * dt)
     end
 end
 -- =================== RENDERIZADO ===================
@@ -62,7 +79,7 @@ function love.draw()
     end
     love.graphics.print(RangoJugador.." "..NombreJugador, PosXtxt, 300)
     love.graphics.draw(ImgArgentino, PosXArgentino, PosYimg,0,0.25,0.25)
-    love.graphics.draw(ImgDracula, PosXDracula,200,0,0.25,0.25)
+    love.graphics.draw(ImgDracula, PosXDracula,PosYDracula,0,0.25,0.25)
     if ActivarDoctor then
         love.graphics.draw(ImgDoctor, 0,0,0,0.25,0.25)
     end
