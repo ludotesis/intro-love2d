@@ -15,23 +15,23 @@ end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
     if love.keyboard.isDown("left") then
-        PosXDracula = PosXDracula - (100 * dt)
+        Jugador_x = Jugador_x - (100 * dt)
     end
 
     if love.keyboard.isDown("right") then
-        PosXDracula = PosXDracula + (100 * dt)
+        Jugador_x = Jugador_x + (100 * dt)
     end
 
     if love.keyboard.isDown("up") then
-        PosYDracula = PosYDracula - (100 * dt)
+       Jugador_y = Jugador_y - (100 * dt)
     end
 
     if love.keyboard.isDown("down") then
-         PosYDracula = PosYDracula + (100 * dt)
+         Jugador_y = Jugador_y + (100 * dt)
     end
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
-    love.graphics.draw(ImgArgentino, Jugador_x,Jugador_y)
     love.graphics.draw(ImgDracula, Enemigo_x,Enemigo_y)
+    love.graphics.draw(ImgArgentino, Jugador_x,Jugador_y)
 end
