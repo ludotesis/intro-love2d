@@ -12,6 +12,13 @@ Enemigo_x = 400
 Enemigo_y = 400
 Enemigo_alto  = 125
 Enemigo_ancho = 125
+-- ================= FUNCIONES ==========================
+function comprobarColision(x1, y1, ancho1, alto1, x2, y2, ancho2, alto2)
+    return x1 < x2 + ancho2 and
+           x2 < x1 + ancho1 and
+           y1 < y2 + alto2 and
+           y2 < y1 + alto1
+end
 -- =================== INICIALIZACION ===================
 function love.load()
     ImgArgentino = love.graphics.newImage("Argentino.png")
@@ -45,4 +52,22 @@ function love.draw()
     love.graphics.setColor(1,1, 1)
     love.graphics.draw(ImgDracula, Enemigo_x,Enemigo_y)
     love.graphics.draw(ImgArgentino, Jugador_x,Jugador_y)
+
+    chocando = comprobarColision(
+        Jugador_x,
+        Jugador_y,
+        Jugador_ancho,
+        Jugador_alto,
+        Enemigo_x,
+        Enemigo_y,
+        Enemigo_ancho,
+        Enemigo_alto
+    )
+
+    if chocando then
+        love.graphics.print("CON COLISION ", 400, 100)
+    else
+        love.graphics.print("SIN COLISION ", 400, 100)
+    end
 end
+
