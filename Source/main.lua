@@ -27,9 +27,15 @@ function love.load()
         table.insert(Caballero.quads, love.graphics.newQuad(192 * i,0,192,192, Caballero.spritesheet))
     end
 end
+-- =================== INTERACCION ===================
+function love.keypressed(key, scancode, isrepeat)
+   if key == "space" then
+      Caballero.atacando = true
+   end
+end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
-    -- Configurar animacion segun ataque
+    -- Configurar animacion segun bandera de ataque
     if Caballero.atacando then
         Caballero.maxAnimVel = 8
         Caballero.maxframes  = 4
@@ -41,6 +47,9 @@ function love.update(dt)
     Caballero.indice = Caballero.indice + Caballero.maxAnimVel * dt
     if Caballero.indice >= Caballero.maxframes then
        Caballero.indice = 1
+       if Caballero.atacando then
+            Caballero.atacando = false
+       end
     end
 end
 -- =================== RENDERIZADO ===================
