@@ -9,7 +9,8 @@ Caballero = {
     frames = {},
     indice = 1,
     sprite = nil,
-    spritesheet = nil
+    spritesheet = nil,
+    quads = {}
 }
 -- =================== INICIALIZACION ===================
 function love.load()
@@ -23,9 +24,10 @@ function love.load()
     end
     ]]--
     Caballero.spritesheet = love.graphics.newImage("img/Correr.png")
-    quad1 = love.graphics.newQuad(0,0,192,192, Caballero.spritesheet)
-    quad2 = love.graphics.newQuad(192,0,192,192, Caballero.spritesheet)
-    quad3 = love.graphics.newQuad(192*2,0,192,192, Caballero.spritesheet)
+    --quad1 = love.graphics.newQuad(0,0,192,192, Caballero.spritesheet)
+    for i=0,5 do
+        table.insert(Caballero.quads, love.graphics.newQuad(192 * i,0,192,192, Caballero.spritesheet))
+    end
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
