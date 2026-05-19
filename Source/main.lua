@@ -31,16 +31,16 @@ function love.load()
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
-    Caballero.indice = Caballero.indice + 5 * dt
-    if Caballero.indice >= 4 then
+    Caballero.indice = Caballero.indice + 10 * dt
+    if Caballero.indice >= 6 then
        Caballero.indice = 1
     end
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
-    --local indiceEntero = math.floor(Caballero.indice)
+    local indiceEntero = math.floor(Caballero.indice)
     --Caballero.sprite = Caballero.frames[indiceEntero]
-    love.graphics.draw(Caballero.spritesheet, quad1, Caballero.x, Caballero.y)
-    love.graphics.draw(Caballero.spritesheet, quad2, Caballero.x + 192, Caballero.y)
-    love.graphics.draw(Caballero.spritesheet, quad3, Caballero.x + 192 * 2, Caballero.y)
+    --love.graphics.draw(Caballero.spritesheet, quad1, Caballero.x, Caballero.y)
+    --love.graphics.draw(Caballero.spritesheet, quad2, Caballero.x + 192, Caballero.y)
+    love.graphics.draw(Caballero.spritesheet, Caballero.quads[indiceEntero], Caballero.x, Caballero.y)
 end
