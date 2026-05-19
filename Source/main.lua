@@ -13,7 +13,7 @@ Caballero = {
     quads = {},
     atacando = false,
     maxframes = 6,
-    maxAnimVel = 10
+    maxAnimVel = 12
 }
 -- =================== INICIALIZACION ===================
 function love.load()
@@ -29,26 +29,24 @@ function love.load()
 end
 -- =================== INTERACCION ===================
 function love.keypressed(key, scancode, isrepeat)
-   if key == "space" then
+   if key == "space" and not Caballero.atacando then
       Caballero.atacando = true
+      Caballero.maxAnimVel = 8
+      Caballero.maxframes  = 4
+      Caballero.indice     = 1
    end
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
-    -- Configurar animacion segun bandera de ataque
-    if Caballero.atacando then
-        Caballero.maxAnimVel = 8
-        Caballero.maxframes  = 4
-    else
-        Caballero.maxAnimVel = 12
-        Caballero.maxframes  = 6
-    end
-
+ 
     Caballero.indice = Caballero.indice + Caballero.maxAnimVel * dt
-    if Caballero.indice >= Caballero.maxframes then
+    if Caballero.indice >= Caballero.maxframes + 1  then
        Caballero.indice = 1
        if Caballero.atacando then
             Caballero.atacando = false
+            Caballero.maxAnimVel = 12
+            Caballero.maxframes  = 6
+            Caballero.indice     = 1
        end
     end
 end
