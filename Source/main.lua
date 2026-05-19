@@ -8,7 +8,8 @@ Caballero = {
     vel = 150,
     frames = {},
     indice = 1,
-    sprite = nil
+    sprite = nil,
+    spritesheet = nil
 }
 -- =================== INICIALIZACION ===================
 function love.load()
@@ -19,6 +20,7 @@ function love.load()
     for i=1,4 do
         table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame"..i..".png"))
     end
+    Caballero.spritesheet = love.graphics.newImage("img/Correr.png")
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
@@ -29,7 +31,7 @@ function love.update(dt)
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
-    local indiceEntero = math.floor(Caballero.indice)
-    Caballero.sprite = Caballero.frames[indiceEntero]
-    love.graphics.draw(Caballero.sprite, Caballero.x, Caballero.y)
+    --local indiceEntero = math.floor(Caballero.indice)
+    --Caballero.sprite = Caballero.frames[indiceEntero]
+    love.graphics.draw(Caballero.spritesheet, Caballero.x, Caballero.y)
 end
