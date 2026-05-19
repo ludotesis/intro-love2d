@@ -12,14 +12,17 @@ Caballero = {
 }
 -- =================== INICIALIZACION ===================
 function love.load()
-    table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame1.png"))
-    table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame2.png"))
-    table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame3.png"))
-    table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame4.png"))
+    --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame1.png"))
+    --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame2.png"))
+    --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame3.png"))
+    --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame4.png"))
+    for i=1,4 do
+        table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame"..i..".png"))
+    end
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
-    Caballero.indice = Caballero.indice + 10 * dt
+    Caballero.indice = Caballero.indice + 5 * dt
     if Caballero.indice >= 4 then
        Caballero.indice = 1
     end
