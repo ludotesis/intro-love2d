@@ -1,18 +1,20 @@
 -- =================== DECLARACION ===================
--- Jugador
-Jugador = {
+-- Caballero
+Caballero = {
     x = 100,
     y = 400,
     ancho = 125,
     alto = 125,
     vel = 150,
-    sprite = nil
+    --sprite = nil
+    frames = {}
 }
 -- =================== INICIALIZACION ===================
 function love.load()
-    Jugador.sprite = love.graphics.newImage("img/ataque/frame1.png")
+    --Caballero.sprite = love.graphics.newImage("img/ataque/frame1.png")
+    table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame1.png"))
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
-    love.graphics.draw(Jugador.sprite, Jugador.x, Jugador.y)
+    love.graphics.draw(Caballero.frames[1], Caballero.x, Caballero.y)
 end
