@@ -11,7 +11,9 @@ Caballero = {
     sprite = nil,
     spritesheet = nil,
     quads = {},
-    atacando = true,
+    atacando = false,
+    maxframes = 6,
+    maxAnimVel = 10
 }
 -- =================== INICIALIZACION ===================
 function love.load()
@@ -27,8 +29,17 @@ function love.load()
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
-    Caballero.indice = Caballero.indice + 10 * dt
-    if Caballero.indice >= 6 then
+    -- Configurar animacion segun ataque
+    if Caballero.atacando then
+        Caballero.maxAnimVel = 8
+        Caballero.maxframes  = 4
+    else
+        Caballero.maxAnimVel = 12
+        Caballero.maxframes  = 6
+    end
+
+    Caballero.indice = Caballero.indice + Caballero.maxAnimVel * dt
+    if Caballero.indice >= Caballero.maxframes then
        Caballero.indice = 1
     end
 end
