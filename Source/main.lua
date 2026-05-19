@@ -6,15 +6,16 @@ Caballero = {
     ancho = 125,
     alto = 125,
     vel = 150,
-    --sprite = nil
-    frames = {}
+    frames = {},
+    sprite = nil
 }
 -- =================== INICIALIZACION ===================
 function love.load()
-    --Caballero.sprite = love.graphics.newImage("img/ataque/frame1.png")
     table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame1.png"))
+    table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame3.png"))
+    Caballero.sprite = Caballero.frames[2]
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
-    love.graphics.draw(Caballero.frames[1], Caballero.x, Caballero.y)
+    love.graphics.draw(Caballero.sprite, Caballero.x, Caballero.y)
 end
