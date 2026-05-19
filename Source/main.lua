@@ -24,7 +24,7 @@ function love.load()
     ]]--
     Caballero.spritesheet = love.graphics.newImage("img/Correr.png")
     quad1 = love.graphics.newQuad(0,0,192,192, Caballero.spritesheet)
-    
+    quad2 = love.graphics.newQuad(192,0,192,192, Caballero.spritesheet)
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
@@ -38,4 +38,6 @@ function love.draw()
     --local indiceEntero = math.floor(Caballero.indice)
     --Caballero.sprite = Caballero.frames[indiceEntero]
     love.graphics.draw(Caballero.spritesheet, quad1, Caballero.x, Caballero.y)
+    love.graphics.draw(Caballero.spritesheet, quad2, Caballero.x + 192, Caballero.y)
+    
 end
