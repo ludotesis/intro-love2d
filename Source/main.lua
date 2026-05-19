@@ -17,10 +17,14 @@ function love.load()
     --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame2.png"))
     --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame3.png"))
     --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame4.png"))
+    --[[
     for i=1,4 do
         table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame"..i..".png"))
     end
+    ]]--
     Caballero.spritesheet = love.graphics.newImage("img/Correr.png")
+    quad1 = love.graphics.newQuad(0,0,192,192, Caballero.spritesheet)
+    
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
@@ -33,5 +37,5 @@ end
 function love.draw()
     --local indiceEntero = math.floor(Caballero.indice)
     --Caballero.sprite = Caballero.frames[indiceEntero]
-    love.graphics.draw(Caballero.spritesheet, Caballero.x, Caballero.y)
+    love.graphics.draw(Caballero.spritesheet, quad1, Caballero.x, Caballero.y)
 end
