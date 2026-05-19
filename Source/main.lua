@@ -10,21 +10,17 @@ Caballero = {
     indice = 1,
     sprite = nil,
     spritesheet = nil,
-    quads = {}
+    quads = {},
+    atacando = false
 }
 -- =================== INICIALIZACION ===================
 function love.load()
-    --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame1.png"))
-    --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame2.png"))
-    --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame3.png"))
-    --table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame4.png"))
-    --[[
+    -- Generar Animacion para Frames
     for i=1,4 do
         table.insert(Caballero.frames, love.graphics.newImage("img/ataque/frame"..i..".png"))
     end
-    ]]--
+    -- Generar Animacion para Spritesheet 
     Caballero.spritesheet = love.graphics.newImage("img/Correr.png")
-    --quad1 = love.graphics.newQuad(0,0,192,192, Caballero.spritesheet)
     for i=0,5 do
         table.insert(Caballero.quads, love.graphics.newQuad(192 * i,0,192,192, Caballero.spritesheet))
     end
