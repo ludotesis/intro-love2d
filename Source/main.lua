@@ -47,11 +47,11 @@ function love.update(dt)
     Jugador.index_anim_attack = Jugador.index_anim_attack + (Jugador.anim_attack_vel * dt)
     Jugador.index_anim_correr = Jugador.index_anim_correr + (Jugador.anim_attack_vel * dt)
     -- Reiniciar indices si alcanzaron duracion
-    if Jugador.index_anim_attack >= Jugador.anim_attack_dur then
+    if Jugador.index_anim_attack >= #Jugador.anim_attack + 1 then
         Jugador.index_anim_attack = 1
     end
 
-    if Jugador.index_anim_correr >= Jugador.anim_correr_dur then
+    if Jugador.index_anim_correr >= #Jugador.anim_correr + 1 then
         Jugador.index_anim_correr = 1
     end
 end
@@ -63,4 +63,7 @@ function love.draw()
     -- Dibujar con indice
     love.graphics.draw(Jugador.anim_attack[indiceAttack], Jugador.x, Jugador.y)
     love.graphics.draw(Spritesheet,Jugador.anim_correr[indiceCorrer], Jugador.x, Jugador.y - Jugador.ancho)
+    -- Ver Longitud Tablas
+    love.graphics.printf("Frames Anim Correr "..#Jugador.anim_correr,300, 300, 200,"center")
+    love.graphics.printf("Frames Anim Attack "..#Jugador.anim_attack,300, 500, 200,"center")
 end
