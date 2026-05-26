@@ -15,7 +15,7 @@ Jugador = {
     anim_correr_dur = 7,
     anim_attack_vel = 10,
     anim_correr_vel = 14,
-    atacando = true
+    atacando = false
 }
 -- Imagenes
 Spritesheet = nil
@@ -42,6 +42,12 @@ function love.load()
        table.insert(Jugador.anim_correr, love.graphics.newQuad(192 * i ,0,192,192, Spritesheet))
     end
 end
+-- =================== INTERACCION ===================
+function love.keypressed(key, scancode, isrepeat)
+   if key == "space" and not Jugador.atacando then
+      Jugador.atacando = true
+   end
+end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
     --[[
@@ -53,15 +59,18 @@ function love.update(dt)
         Jugador.index_anim_attack = 1
     end
 
-    if Jugador.index_anim_correr >= #Jugador.anim_correr + 1 then
-        Jugador.index_anim_correr = 1
-    end
+    
     ]]
 
     if Jugador.atacando then
         Jugador.index_anim_attack = Jugador.index_anim_attack + (Jugador.anim_attack_vel * dt)
         if Jugador.index_anim_attack >= #Jugador.anim_attack + 1 then
             Jugador.index_anim_attack = 1
+        end
+    else
+        Jugador.index_anim_correr = Jugador.index_anim_correr + (Jugador.anim_attack_vel * dt)
+        if Jugador.index_anim_correr >= #Jugador.anim_correr + 1 then
+            Jugador.index_anim_correr = 1
         end
     end
 
