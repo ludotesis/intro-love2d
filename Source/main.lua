@@ -14,7 +14,8 @@ Jugador = {
     anim_attack_dur = 5,
     anim_correr_dur = 7,
     anim_attack_vel = 10,
-    anim_correr_vel = 14
+    anim_correr_vel = 14,
+    atacando = true
 }
 -- Imagenes
 Spritesheet = nil
@@ -43,6 +44,7 @@ function love.load()
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
+    --[[
     -- Avanzar indices en cada frame
     Jugador.index_anim_attack = Jugador.index_anim_attack + (Jugador.anim_attack_vel * dt)
     Jugador.index_anim_correr = Jugador.index_anim_correr + (Jugador.anim_attack_vel * dt)
@@ -54,6 +56,16 @@ function love.update(dt)
     if Jugador.index_anim_correr >= #Jugador.anim_correr + 1 then
         Jugador.index_anim_correr = 1
     end
+    ]]
+
+    if Jugador.atacando then
+        Jugador.index_anim_attack = Jugador.index_anim_attack + (Jugador.anim_attack_vel * dt)
+        if Jugador.index_anim_attack >= #Jugador.anim_attack + 1 then
+            Jugador.index_anim_attack = 1
+        end
+    end
+
+    
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
