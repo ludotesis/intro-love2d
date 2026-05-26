@@ -21,18 +21,25 @@ Spritesheet = nil
 -- =================== INICIALIZACION ===================
 function love.load()
     -- Cargar Tabla Animacion Ataque
-    table.insert(Jugador.anim_attack,love.graphics.newImage("img/ataque/frame1.png"))   -- 1
-    table.insert(Jugador.anim_attack,love.graphics.newImage("img/ataque/frame2.png"))   -- 2
-    table.insert(Jugador.anim_attack,love.graphics.newImage("img/ataque/frame3.png"))   -- 3
-    table.insert(Jugador.anim_attack,love.graphics.newImage("img/ataque/frame4.png"))   -- 4
+    --table.insert(Jugador.anim_attack,love.graphics.newImage("img/ataque/frame1.png"))   -- 1
+    --table.insert(Jugador.anim_attack,love.graphics.newImage("img/ataque/frame2.png"))   -- 2
+    --table.insert(Jugador.anim_attack,love.graphics.newImage("img/ataque/frame3.png"))   -- 3
+    --table.insert(Jugador.anim_attack,love.graphics.newImage("img/ataque/frame4.png"))   -- 4
+    -- Cargar Tabla Animacion Ataque con For
+    for i = 1, 4 do
+        table.insert(Jugador.anim_attack, love.graphics.newImage("img/ataque/frame" .. i .. ".png"))
+    end
     -- Cargar Tabla Animacion Correr
     Spritesheet = love.graphics.newImage("img/Correr.png")
-    table.insert(Jugador.anim_correr, love.graphics.newQuad(192 * 0 ,0,192,192, Spritesheet))   -- 1
-    table.insert(Jugador.anim_correr,love.graphics.newQuad(192 * 1 ,0,192,192, Spritesheet))    -- 2
-    table.insert(Jugador.anim_correr,love.graphics.newQuad(192 * 2 ,0,192,192, Spritesheet))    -- 3
-    table.insert(Jugador.anim_correr,love.graphics.newQuad(192 * 3 ,0,192,192, Spritesheet))    -- 4
-    table.insert(Jugador.anim_correr,love.graphics.newQuad(192 * 4 ,0,192,192, Spritesheet))    -- 5
-    table.insert(Jugador.anim_correr,love.graphics.newQuad(192 * 5 ,0,192,192, Spritesheet))    -- 6
+    --table.insert(Jugador.anim_correr, love.graphics.newQuad(192 * 0 ,0,192,192, Spritesheet))   -- 1
+    --table.insert(Jugador.anim_correr,love.graphics.newQuad(192 * 1 ,0,192,192, Spritesheet))    -- 2
+    --table.insert(Jugador.anim_correr,love.graphics.newQuad(192 * 2 ,0,192,192, Spritesheet))    -- 3
+    --table.insert(Jugador.anim_correr,love.graphics.newQuad(192 * 3 ,0,192,192, Spritesheet))    -- 4
+    --table.insert(Jugador.anim_correr,love.graphics.newQuad(192 * 4 ,0,192,192, Spritesheet))    -- 5
+    --table.insert(Jugador.anim_correr,love.graphics.newQuad(192 * 5 ,0,192,192, Spritesheet))    -- 6
+    for i = 0, 5, 1 do
+       table.insert(Jugador.anim_correr, love.graphics.newQuad(192 * i ,0,192,192, Spritesheet))
+    end
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
