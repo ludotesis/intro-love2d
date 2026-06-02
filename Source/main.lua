@@ -1,3 +1,5 @@
+-- Importar el módulo de sonidos
+require("sonidos")
 -- =================== DECLARACION ===================
 -- Jugador
 Jugador = {
@@ -17,11 +19,7 @@ Jugador = {
 }
 -- Imagenes
 Spritesheet = nil
--- Tabla de Sonidos
-sonidos = nil
-clave_musica  = "musica"
-clave_ataque  = "espada"
-clave_caminar = "caminar"
+
 -- =================== INICIALIZACION ===================
 function love.load()
     -- Cargar Tabla Animacion Ataque
@@ -34,17 +32,7 @@ function love.load()
        table.insert(Jugador.anim_correr, love.graphics.newQuad(192 * i ,0,192,192, Spritesheet))
     end
     -- Cargar Sonidos
-    sonidos =
-    {
-        [clave_musica] = love.audio.newSource("sonidos/musica.ogg", "stream"),
-        [clave_ataque]  = love.audio.newSource("sonidos/"..clave_ataque..".wav", "static"),
-        [clave_caminar] = love.audio.newSource("sonidos/pasos.wav", "static")
-    }
-
-    sonidos.musica:setVolume(0.1)
-    sonidos.musica:setPitch(3)
-    -- Iniciar Musica
-    love.audio.play(sonidos[clave_musica])
+    CargarSonidos()
 end
 -- =================== INTERACCION ===================
 function love.keypressed(key, scancode, isrepeat)
