@@ -33,9 +33,9 @@ function love.load()
     -- Cargar Sonidos
     sonidos =
     {
-        musica = love.audio.newSource("sonidos/musica.ogg", "stream"),
-        ataque  = love.audio.newSource("sonidos/espada.wav", "static"),
-        caminar = love.audio.newSource("sonidos/pasos.wav", "static")
+        ['musica'] = love.audio.newSource("sonidos/musica.ogg", "stream"),
+        ['ataque']  = love.audio.newSource("sonidos/espada.wav", "static"),
+        ['caminar'] = love.audio.newSource("sonidos/pasos.wav", "static")
     }
 
     sonidos.musica:setVolume(0.1)
