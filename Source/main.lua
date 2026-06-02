@@ -11,8 +11,6 @@ Jugador = {
     anim_correr = {},
     index_anim_attack = 1,
     index_anim_correr = 1,
---    anim_attack_dur = 5,
---    anim_correr_dur = 7,
     anim_attack_vel = 10,
     anim_correr_vel = 14,
     atacando = false
@@ -61,7 +59,4 @@ function love.draw()
         local indiceCorrer = math.floor(Jugador.index_anim_correr)
         love.graphics.draw(Spritesheet,Jugador.anim_correr[indiceCorrer], Jugador.x, Jugador.y)
     end
-    -- Ver Longitud Tablas
-    --love.graphics.printf("Frames Anim Correr "..#Jugador.anim_correr,300, 300, 200,"center")
-    --love.graphics.printf("Frames Anim Attack "..#Jugador.anim_attack,300, 500, 200,"center")
 end
