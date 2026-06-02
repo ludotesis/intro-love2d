@@ -19,6 +19,9 @@ Jugador = {
 Spritesheet = nil
 -- Tabla de Sonidos
 sonidos = nil
+clave_musica  = "musica"
+clave_ataque  = "ataque"
+clave_caminar = "caminar"
 -- =================== INICIALIZACION ===================
 function love.load()
     -- Cargar Tabla Animacion Ataque
@@ -33,22 +36,22 @@ function love.load()
     -- Cargar Sonidos
     sonidos =
     {
-        ['musica'] = love.audio.newSource("sonidos/musica.ogg", "stream"),
-        ['ataque']  = love.audio.newSource("sonidos/espada.wav", "static"),
-        ['caminar'] = love.audio.newSource("sonidos/pasos.wav", "static")
+        [clave_musica] = love.audio.newSource("sonidos/musica.ogg", "stream"),
+        [clave_ataque]  = love.audio.newSource("sonidos/espada.wav", "static"),
+        [clave_caminar] = love.audio.newSource("sonidos/pasos.wav", "static")
     }
 
     sonidos.musica:setVolume(0.1)
     sonidos.musica:setPitch(3)
     -- Iniciar Musica
-    love.audio.play(sonidos.musica)
+    love.audio.play(sonidos[clave_musica])
 end
 -- =================== INTERACCION ===================
 function love.keypressed(key, scancode, isrepeat)
    if key == "space" and not Jugador.atacando then
       Jugador.atacando = true
-      love.audio.stop(sonidos.caminar)
-      love.audio.play(sonidos.ataque)
+      love.audio.stop(sonidos[clave_caminar])
+      love.audio.play(sonidos[clave_ataque])
    end
 end
 -- =================== ACTUALIZACION ===================
@@ -65,8 +68,8 @@ function love.update(dt)
             Jugador.index_anim_correr = 1
         end
 
-        if not sonidos.caminar:isPlaying() then
-            love.audio.play(sonidos.caminar)
+        if not sonidos[clave_caminar]:isPlaying() then
+            love.audio.play(sonidos[clave_caminar])
         end
     end
 end
