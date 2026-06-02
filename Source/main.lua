@@ -19,6 +19,7 @@ Jugador = {
 Spritesheet = nil
 -- Sonidos
 musica = nil
+ataque = nil
 -- =================== INICIALIZACION ===================
 function love.load()
     -- Cargar Tabla Animacion Ataque
@@ -32,6 +33,7 @@ function love.load()
     end
     -- Cargar Sonidos
     musica = love.audio.newSource("sonidos/musica.ogg", "stream")
+    ataque = love.audio.newSource("sonidos/espada.wav", "static")
     -- Iniciar Musica
     love.audio.play(musica)
 end
@@ -39,6 +41,7 @@ end
 function love.keypressed(key, scancode, isrepeat)
    if key == "space" and not Jugador.atacando then
       Jugador.atacando = true
+      love.audio.play(ataque)
    end
 end
 -- =================== ACTUALIZACION ===================
