@@ -17,6 +17,8 @@ Jugador = {
 }
 -- Imagenes
 Spritesheet = nil
+-- Sonidos
+musica = nil
 -- =================== INICIALIZACION ===================
 function love.load()
     -- Cargar Tabla Animacion Ataque
@@ -28,6 +30,10 @@ function love.load()
     for i = 0, 5, 1 do
        table.insert(Jugador.anim_correr, love.graphics.newQuad(192 * i ,0,192,192, Spritesheet))
     end
+    -- Cargar Sonidos
+    musica = love.audio.newSource("sonidos/musica.ogg", "stream")
+    -- Iniciar Musica
+    love.audio.play(musica)
 end
 -- =================== INTERACCION ===================
 function love.keypressed(key, scancode, isrepeat)
