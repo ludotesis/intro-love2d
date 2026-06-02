@@ -20,7 +20,7 @@ Spritesheet = nil
 -- Tabla de Sonidos
 sonidos = nil
 clave_musica  = "musica"
-clave_ataque  = "ataque"
+clave_ataque  = "espada"
 clave_caminar = "caminar"
 -- =================== INICIALIZACION ===================
 function love.load()
@@ -37,7 +37,7 @@ function love.load()
     sonidos =
     {
         [clave_musica] = love.audio.newSource("sonidos/musica.ogg", "stream"),
-        [clave_ataque]  = love.audio.newSource("sonidos/espada.wav", "static"),
+        [clave_ataque]  = love.audio.newSource("sonidos/"..clave_ataque..".wav", "static"),
         [clave_caminar] = love.audio.newSource("sonidos/pasos.wav", "static")
     }
 
