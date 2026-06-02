@@ -1,21 +1,21 @@
 -- =================== IMPORTAR ===================
 require("sonidos")
+require("jugador")
 -- =================== DECLARACION ===================
--- Jugador
-
-
-
 -- =================== INICIALIZACION ===================
 function love.load()
-    -- Cargar Sonidos
     CargarSonidos()
+    CargarJugador()
 end
 -- =================== INTERACCION ===================
 function love.keypressed(key, scancode, isrepeat)
+    InteraccionJugador(key)
 end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
+    ActualizarJugador(dt)
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
+    DibujarJugador()
 end
