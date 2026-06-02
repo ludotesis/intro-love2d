@@ -18,8 +18,9 @@ Jugador = {
 -- Imagenes
 Spritesheet = nil
 -- Sonidos
-musica = nil
-ataque = nil
+musica  = nil
+ataque  = nil
+caminar = nil
 -- =================== INICIALIZACION ===================
 function love.load()
     -- Cargar Tabla Animacion Ataque
@@ -33,14 +34,18 @@ function love.load()
     end
     -- Cargar Sonidos
     musica = love.audio.newSource("sonidos/musica.ogg", "stream")
-    ataque = love.audio.newSource("sonidos/espada.wav", "static")
+    musica:setVolume(0.25)
+    musica:setPitch(3)
+    ataque  = love.audio.newSource("sonidos/espada.wav", "static")
+    caminar = love.audio.newSource("sonidos/pasos.wav", "static")
     -- Iniciar Musica
-    love.audio.play(musica)
+    --love.audio.play(musica)
 end
 -- =================== INTERACCION ===================
 function love.keypressed(key, scancode, isrepeat)
    if key == "space" and not Jugador.atacando then
       Jugador.atacando = true
+      love.audio.stop(caminar)
       love.audio.play(ataque)
    end
 end
@@ -57,6 +62,7 @@ function love.update(dt)
         if Jugador.index_anim_correr >= #Jugador.anim_correr + 1 then
             Jugador.index_anim_correr = 1
         end
+        love.audio.play(caminar)
     end
 end
 -- =================== RENDERIZADO ===================
