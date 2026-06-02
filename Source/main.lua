@@ -62,7 +62,10 @@ function love.update(dt)
         if Jugador.index_anim_correr >= #Jugador.anim_correr + 1 then
             Jugador.index_anim_correr = 1
         end
-        love.audio.play(caminar)
+        
+        if not caminar:isPlaying() then
+            love.audio.play(caminar)
+        end
     end
 end
 -- =================== RENDERIZADO ===================
