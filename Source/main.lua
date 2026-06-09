@@ -22,8 +22,8 @@ function love.load()
       table.insert(sfx.quads, love.graphics.newQuad(192 * i ,0,192,192,  sfx.spritesheet))
    end
    ]]
-   --CrearAnimacion(sfx,"img/efectos/Explosion.png", 9,192, 10)
-   CrearAnimacion(sfx,"img/efectos/Agua.png", 9,192, 10)
+   CrearAnimacion(sfx,"img/efectos/Explosion.png", 9,192, 10)
+   --CrearAnimacion(sfx,"img/efectos/Agua.png", 9,192, 10)
    --CrearAnimacion(sfx,"img/efectos/Fuego.png", 12,64, 12)
 end
 -- =================== INTERACCION ===================
@@ -44,6 +44,9 @@ end
 -- =================== RENDERIZADO ===================
 function love.draw()
    DibujarJugador()
+   --[[
    local indiceSFX = math.floor(sfx.indice)
    love.graphics.draw(sfx.spritesheet,sfx.quads[indiceSFX], Jugador.x + 50, Jugador.y)
+   ]]
+   DibujarAnimacion(sfx, Jugador.x + 100, Jugador.y - 100)
 end

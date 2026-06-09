@@ -36,3 +36,13 @@ function ActualizarAnimacion(tabla,dt)
       tabla.indice = 1
    end
 end
+
+--[[
+   local indiceSFX = math.floor(sfx.indice)
+   love.graphics.draw(sfx.spritesheet,sfx.quads[indiceSFX], Jugador.x + 50, Jugador.y)
+]]
+
+function DibujarAnimacion(tabla, x, y)
+   local i = math.floor(tabla.indice)
+   love.graphics.draw(tabla.spritesheet,tabla.quads[i], x, y)
+end
