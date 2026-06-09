@@ -23,8 +23,8 @@ function love.load()
    end
    ]]
    --CrearAnimacion(sfx,"img/efectos/Explosion.png", 9,192, 10)
-   --CrearAnimacion(sfx,"img/efectos/Agua.png", 9,192, 10)
-   CrearAnimacion(sfx,"img/efectos/Fuego.png", 12,64, 12)
+   CrearAnimacion(sfx,"img/efectos/Agua.png", 9,192, 10)
+   --CrearAnimacion(sfx,"img/efectos/Fuego.png", 12,64, 12)
 end
 -- =================== INTERACCION ===================
 function love.keypressed(key, scancode, isrepeat)
@@ -33,10 +33,13 @@ end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
    ActualizarJugador(dt)
+   --[[
    sfx.indice = sfx.indice + (sfx.velocidad * dt)
    if sfx.indice >= #sfx.quads + 1 then
       sfx.indice = 1
    end
+   ]]
+   ActualizarAnimacion(sfx,dt)
 end
 -- =================== RENDERIZADO ===================
 function love.draw()

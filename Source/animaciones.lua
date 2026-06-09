@@ -22,3 +22,17 @@ function CrearAnimacion(tabla, imagen, cantidad_quads, ancho, velocidad)
         table.insert(tabla.quads, love.graphics.newQuad(ancho * i ,0,ancho,ancho, tabla.spritesheet))
     end
 end
+
+--[[
+ sfx.indice = sfx.indice + (sfx.velocidad * dt)
+   if sfx.indice >= #sfx.quads + 1 then
+      sfx.indice = 1
+   end
+]]
+
+function ActualizarAnimacion(tabla,dt)
+   tabla.indice = tabla.indice + (tabla.velocidad * dt)
+   if tabla.indice >= #tabla.quads + 1 then
+      tabla.indice = 1
+   end
+end
