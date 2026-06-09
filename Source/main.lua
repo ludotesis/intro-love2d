@@ -5,6 +5,8 @@ require('animaciones')
 sfx_explosion = {}
 sfx_fuego = {}
 sfx_agua = {}
+
+alarma = 2
 -- =================== INICIALIZACION ===================
 function love.load()
    InicializarJugador()
@@ -21,14 +23,20 @@ end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
    ActualizarJugador(dt)
-   ReproducirUnaVez(sfx_explosion,dt)
    ActualizarAnimacion(sfx_agua, dt)
-   ReproducirUnaVez(sfx_fuego,dt)
+
+   alarma = alarma - dt
+   if alarma < 0 then
+      ReproducirUnaVez(sfx_explosion,dt)
+      ReproducirUnaVez(sfx_fuego,dt)
+   end
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
    DibujarJugador()
-   DibujarAnimacion(sfx_explosion, Jugador.x + 100, Jugador.y)
    DibujarAnimacion(sfx_agua, Jugador.x + 200, Jugador.y)
-   DibujarAnimacion(sfx_fuego, Jugador.x + 400, Jugador.y)
+   if alarma < 0 then
+      DibujarAnimacion(sfx_explosion, Jugador.x + 100, Jugador.y)
+      DibujarAnimacion(sfx_fuego, Jugador.x + 400, Jugador.y)
+   end
 end
