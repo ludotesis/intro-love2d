@@ -10,21 +10,17 @@ sfx = {
    velocidad = 10
 }
 ]]
-sfx = {}
+sfx_explosion = {}
+sfx_fuego = {}
+sfx_agua = {}
 -- =================== INICIALIZACION ===================
 function love.load()
    InicializarJugador()
    --CargarSonidos()
    --ConfigurarSonidos()
-   --[[
-   sfx.spritesheet = love.graphics.newImage("img/efectos/Explosion.png")
-   for i = 0, 9, 1 do
-      table.insert(sfx.quads, love.graphics.newQuad(192 * i ,0,192,192,  sfx.spritesheet))
-   end
-   ]]
-   CrearAnimacion(sfx,"img/efectos/Explosion.png", 9,192, 10)
-   --CrearAnimacion(sfx,"img/efectos/Agua.png", 9,192, 10)
-   --CrearAnimacion(sfx,"img/efectos/Fuego.png", 12,64, 12)
+   CrearAnimacion(sfx_explosion,"img/efectos/Explosion.png", 9,192, 10)
+   CrearAnimacion(sfx_agua,"img/efectos/Agua.png", 9,192, 10)
+   CrearAnimacion(sfx_fuego,"img/efectos/Fuego.png", 12,64, 12)
 end
 -- =================== INTERACCION ===================
 function love.keypressed(key, scancode, isrepeat)
@@ -33,20 +29,14 @@ end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
    ActualizarJugador(dt)
-   --[[
-   sfx.indice = sfx.indice + (sfx.velocidad * dt)
-   if sfx.indice >= #sfx.quads + 1 then
-      sfx.indice = 1
-   end
-   ]]
-   ActualizarAnimacion(sfx,dt)
+   ActualizarAnimacion(sfx_explosion,dt)
+   ActualizarAnimacion(sfx_agua, dt)
+   ActualizarAnimacion(sfx_fuego,dt)
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
    DibujarJugador()
-   --[[
-   local indiceSFX = math.floor(sfx.indice)
-   love.graphics.draw(sfx.spritesheet,sfx.quads[indiceSFX], Jugador.x + 50, Jugador.y)
-   ]]
-   DibujarAnimacion(sfx, Jugador.x + 100, Jugador.y - 100)
+   DibujarAnimacion(sfx_explosion, Jugador.x + 100, Jugador.y)
+   DibujarAnimacion(sfx_agua, Jugador.x + 200, Jugador.y)
+   DibujarAnimacion(sfx_fuego, Jugador.x + 400, Jugador.y)
 end
