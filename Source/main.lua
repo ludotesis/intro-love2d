@@ -2,14 +2,6 @@ require('sonido')
 require('jugador')
 require('animaciones')
 -- =================== DECLARACION ===================
---[[
-sfx = {
-   quads = {},
-   spritesheet = nil,
-   indice = 1,
-   velocidad = 10
-}
-]]
 sfx_explosion = {}
 sfx_fuego = {}
 sfx_agua = {}
@@ -29,9 +21,9 @@ end
 -- =================== ACTUALIZACION ===================
 function love.update(dt)
    ActualizarJugador(dt)
-   ActualizarAnimacion(sfx_explosion,dt)
+   ReproducirUnaVez(sfx_explosion,dt)
    ActualizarAnimacion(sfx_agua, dt)
-   ActualizarAnimacion(sfx_fuego,dt)
+   ReproducirUnaVez(sfx_fuego,dt)
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
