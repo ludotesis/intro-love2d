@@ -33,8 +33,8 @@ end
 function InteraccionJugador(key)
     if key == "space" and not Jugador.atacando then
       Jugador.atacando = true
-      love.audio.stop(sonidos.caminar)
-      love.audio.play(sonidos.ataque)
+      --love.audio.stop(sonidos.caminar)
+      --love.audio.play(sonidos.ataque)
    end
 end
 -- =================== ACTUALIZACION ===================
@@ -44,9 +44,11 @@ function ActualizarJugador(dt)
         if Jugador.index_anim_attack >= #Jugador.anim_attack + 1 then
             Jugador.index_anim_attack = 1
             Jugador.atacando = false
+            --[[
             if not sonidos.caminar:isPlaying() then
                 love.audio.play(sonidos.caminar)
             end
+            ]]
         end
     else
         Jugador.index_anim_correr = Jugador.index_anim_correr + (Jugador.anim_correr_vel * dt)

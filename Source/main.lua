@@ -3,9 +3,9 @@ require('jugador')
 -- =================== DECLARACION ===================
 -- =================== INICIALIZACION ===================
 function love.load()
-    InicializarJugador()
-    CargarSonidos()
-    ConfigurarSonidos()
+   InicializarJugador()
+   --CargarSonidos()
+   --ConfigurarSonidos()
 end
 -- =================== INTERACCION ===================
 function love.keypressed(key, scancode, isrepeat)
