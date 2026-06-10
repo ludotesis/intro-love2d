@@ -6,7 +6,10 @@ sfx_explosion = {}
 sfx_fuego = {}
 sfx_agua = {}
 
-alarma = 2
+img_particula = nil
+particula = nil
+
+alarma = 3
 -- =================== INICIALIZACION ===================
 function love.load()
    InicializarJugador()
@@ -15,6 +18,14 @@ function love.load()
    CrearAnimacion(sfx_explosion,"img/efectos/Explosion.png", 9,192, 10)
    CrearAnimacion(sfx_agua,"img/efectos/Agua.png", 9,192, 10)
    CrearAnimacion(sfx_fuego,"img/efectos/Fuego.png", 12,64, 12)
+   -- Crea Particula
+   img_particula = love.graphics.newImage('img/efectos/estrella.png')
+   particula = love.graphics.newParticleSystem(img_particula, 32)
+   particula:setParticleLifetime(2, 5) -- Particles live at least 2s and at most 5s.
+	particula:setEmissionRate(5)
+	particula:setSizeVariation(1)
+	particula:setLinearAcceleration(-20, -20, 20, 20) -- Random movement in all directions.
+	particula:setColors(0, 1, 0, 1,   1, 0, 0, 0)
 end
 -- =================== INTERACCION ===================
 function love.keypressed(key, scancode, isrepeat)
@@ -30,6 +41,8 @@ function love.update(dt)
       ReproducirUnaVez(sfx_explosion,dt)
       ReproducirUnaVez(sfx_fuego,dt)
    end
+
+   particula:update(dt)
 end
 -- =================== RENDERIZADO ===================
 function love.draw()
@@ -39,4 +52,5 @@ function love.draw()
       DibujarAnimacion(sfx_explosion, Jugador.x + 100, Jugador.y)
       DibujarAnimacion(sfx_fuego, Jugador.x + 400, Jugador.y)
    end
+   love.graphics.draw(particula, love.graphics.getWidth() * 0.5, love.graphics.getHeight() * 0.5)
 end
